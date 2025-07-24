@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poveste Ramificată: Fake News vs Real News</title>
+<style>
+  body {font-family: Arial, sans-serif; background: #f5f7fa; color: #333; margin: 0; padding: 0;}
+  section {display: none; padding: 40px 20px; max-width: 800px; margin: auto;}
+  section.active {display: block;}
+  h1 {font-size: 1.8rem; margin-bottom: 1rem;}
+  p {margin-bottom: 1.2rem; line-height: 1.45;}
+  button {display: block; margin: 8px 0; padding: 10px 16px; font-size: 1rem; background: #4f81bd; color: #fff; border: none; border-radius: 8px; cursor: pointer;}
+  button:hover {background: #3e6fa1;}
+  footer {margin-top: 2rem; font-size: 0.9rem; color: #666; text-align: center; padding-bottom: 40px;}
+</style>
+</head>
+<body>
+
+<!-- Nodul A0 -->
+<section id="A0" class="active">
+  <h1>A0</h1>
+  <p>E vineri după‑amiază. În grupul de Whatsapp al clasei apare un titlu: «Apa de la robinet va fi tăiată 7 zile în tot oraşul!»</p>
+  <button data-target="B0">Share instant</button>
+  <button data-target="B1">Verifică sursa</button>
+</section>
+
+<!-- Nodul B0 -->
+<section id="B0">
+  <h1>B0</h1>
+  <p>Colegii încep să trimită emoji panicate… Un părinte sună diriginta.</p>
+  <button data-target="C0">Șterge mesajul</button>
+  <button data-target="C2">Adaugă un update: „Nu mai e sigur”</button>
+</section>
+
+<!-- Nodul B1 -->
+<section id="B1">
+  <h1>B1</h1>
+  <p>Deschizi linkul. Adresa e «aguaincredibila‑blog.xyz». Nicio secţiune «Despre noi».</p>
+  <button data-target="C1">Caută pe Google</button>
+  <button data-target="C1">Caută site oficial</button>
+</section>
+
+<!-- Nodul C0 -->
+<section id="C0">
+  <h1>C0</h1>
+  <p>Mesajul fals e deja capturat în screenshot‑uri. Devii „sursa” fake‑news‑ului.</p>
+  <button data-target="D0">Continuă</button>
+</section>
+
+<!-- Nodul C2 -->
+<section id="C2">
+  <h1>C2</h1>
+  <p>Profesorul/Comunicatul clarifică: «Doar presiune scăzută 2 ore».</p>
+  <button data-target="D2">Scrie un mesaj corectiv</button>
+</section>
+
+<!-- Nodul C1 -->
+<section id="C1">
+  <h1>C1</h1>
+  <p>Găseşti un comunicat oficial: «Vor fi lucrări DOAR marţi, 10:00‑15:00, cartier X». Articolul era de 3 ani!</p>
+  <button data-target="D1">Trimite corecţia</button>
+  <button data-target="D2">Ignoră</button>
+</section>
+
+<!-- Nodul D0 (Fail) -->
+<section id="D0">
+  <h1>D0 – Eșec</h1>
+  <p>Panică inutilă. Diriginta impune reguli de postare, iar tu primești observație.</p>
+  <button data-target="A0">Reia aventura</button>
+</section>
+
+<!-- Nodul D2 (Lecție) -->
+<section id="D2">
+  <h1>D2 – Lecție Învațată</h1>
+  <p>O parte din colegi apreciază clarificarea, dar confuzia rămâne. Data viitoare vei verifica înainte de share.</p>
+  <button data-target="A0">Reia aventura</button>
+</section>
+
+<!-- Nodul D1 (Succes) -->
+<section id="D1">
+  <h1>D1 – Succes!</h1>
+  <p>Colegii îţi mulţumesc. Profesorul te laudă la oră pentru spirit critic!</p>
+  <button data-target="A0">Reia aventura</button>
+</section>
+
+<footer>
+  Sinteză realizată de profesor &copy; 2025
+</footer>
+
+<script>
+  document.addEventListener('click', function (e) {
+    if (e.target && e.target.dataset && e.target.dataset.target) {
+      const target = e.target.dataset.target;
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      const next = document.getElementById(target);
+      if (next) {
+        next.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
